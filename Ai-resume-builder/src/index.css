@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+        /* Normal size */
+    }
+
+    50% {
+        transform: scale(1.05);
+        /* Bouncing effect (slightly bigger) */
+    }
+}
+
+.bounce-animation {
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.bounce-animation {
+    animation: bounce 0.5s ease-in-out;
+}
