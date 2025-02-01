@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { useState } from "react";
 
 const Landing = () => {
@@ -22,10 +21,6 @@ const Landing = () => {
         }
     };
 
-=======
-
-const Landing = () => {
->>>>>>> caeab92 (pushin my files and completed upto login page)
     return (
         <div className="h-screen flex flex-col items-center justify-center bg-white text-center px-8">
             <div className="flex flex-col items-center space-y-8">
@@ -56,7 +51,6 @@ const Landing = () => {
                         Get Started
                     </Link>
                 </motion.div>
-<<<<<<< HEAD
 
                 <button
                     onClick={testApiRequest}
@@ -71,15 +65,9 @@ const Landing = () => {
                         <p className="text-gray-800">{apiResponse}</p>
                     </div>
                 )}
-=======
->>>>>>> caeab92 (pushin my files and completed upto login page)
             </div>
         </div>
     );
 };
 
-<<<<<<< HEAD
 export default Landing;
-=======
-export default Landing;
->>>>>>> caeab92 (pushin my files and completed upto login page)
