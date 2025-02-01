@@ -19,6 +19,7 @@ const Navbar = () => {
                         <Link to="/" className="text-gray-800 text-lg font-medium hover:text-blue-600 transition-all duration-300">Home</Link>
                         <Link to="/editor" className="text-gray-800 text-lg font-medium hover:text-blue-600 transition-all duration-300">Editor</Link>
                         <Link to="/templates" className="text-gray-800 text-lg font-medium hover:text-blue-600 transition-all duration-300">Templates</Link>
+                        <Link to="/features" className="text-gray-800 text-lg font-medium hover:text-blue-600 transition-all duration-300">Features</Link>
                     </div>
 
                     {/* Login Button */}
@@ -73,6 +74,7 @@ const Navbar = () => {
                                 <Link to="/" className="text-gray-800 hover:text-blue-600" onClick={() => setMenuOpen(false)}>Home</Link>
                                 <Link to="/editor" className="text-gray-800 hover:text-blue-600" onClick={() => setMenuOpen(false)}>Editor</Link>
                                 <Link to="/templates" className="text-gray-800 hover:text-blue-600" onClick={() => setMenuOpen(false)}>Templates</Link>
+                                <Link to="/features" className="text-gray-800 hover:text-blue-600" onClick={() => setMenuOpen(false)}>Features</Link>
                                 <Link to="/login" className="bg-blue-600 text-white text-center py-2 rounded-lg hover:bg-blue-500 transition-all duration-300" onClick={() => setMenuOpen(false)}>
                                     Login
                                 </Link>
