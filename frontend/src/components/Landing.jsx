@@ -1,26 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Landing = () => {
-    const [apiResponse, setApiResponse] = useState("");
-
-    const testApiRequest = async () => {
-        try {
-            const response = await fetch("http://localhost:5000/generate-content", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ prompt: "Write a short introduction about AI." }),
-            });
-            const data = await response.json();
-            setApiResponse(data.content);
-        } catch (error) {
-            console.error("Error fetching API:", error);
-        }
-    };
-
     return (
         <div className="h-screen flex flex-col items-center justify-center bg-white text-center px-8">
             <div className="flex flex-col items-center space-y-8">
@@ -51,20 +32,6 @@ const Landing = () => {
                         Get Started
                     </Link>
                 </motion.div>
-
-                <button
-                    onClick={testApiRequest}
-                    className="mt-4 bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-500 transition-all duration-300"
-                >
-                    Test API Request
-                </button>
-
-                {apiResponse && (
-                    <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-md">
-                        <h3 className="text-lg font-semibold">API Response:</h3>
-                        <p className="text-gray-800">{apiResponse}</p>
-                    </div>
-                )}
             </div>
         </div>
     );

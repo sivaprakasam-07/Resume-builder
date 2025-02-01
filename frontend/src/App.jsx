@@ -7,6 +7,9 @@ import Footer from "./components/Footer";
 import Landing from "./components/Landing";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import TemplatePage from "./components/Template"; // Import TemplatePage
+import EditorPage from "./components/Editor"; // Ensure this matches the exact casing of the file path
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -18,8 +21,11 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/templates" element={<TemplatePage />} /> {/* Route for TemplatePage */}
+            <Route path="/editor" element={<EditorPage />} /> {/* Route for EditorPage */}
           </Routes>
           <Footer />
+          <Toaster />
         </AuthProvider>
       </Router>
     </GoogleOAuthProvider>
