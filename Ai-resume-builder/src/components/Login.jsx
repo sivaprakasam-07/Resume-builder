@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { auth, provider, signInWithPopup } from "./firebase"; // Import Firebase methods
-import { useNavigate } from "react-router-dom"; // For navigation after successful login
+import { auth, googleProvider, signInWithPopup } from "../firebase"; // Corrected import path
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -10,12 +10,13 @@ const Login = () => {
     // Google sign-in handler
     const handleGoogleSignIn = async () => {
         try {
-            const result = await signInWithPopup(auth, provider); // Google Sign-In
-            const user = result.user;
-            console.log("Google sign-in successful: ", user);
-
-            // Redirect to another page after successful login (e.g., dashboard)
-            navigate("/dashboard"); // This will navigate to the '/dashboard' route
+            const result = await signInWithPopup(auth, googleProvider); // Ensure signInWithPopup is used correctly
+            if (result?.user) {
+                console.log("Google sign-in successful: ", result.user);
+                navigate("/"); // Redirect to home or another route
+            } else {
+                console.log("Google Sign-In failed.");
+            }
         } catch (error) {
             console.error("Google Sign-In error: ", error.message);
         }
@@ -23,7 +24,7 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // You can implement your email/password login here if needed.
+        // Add email/password login logic here if needed
     };
 
     return (
@@ -66,22 +67,10 @@ const Login = () => {
                         fill="currentColor"
                         aria-hidden="true"
                     >
-                        <path
-                            d="M23.49 12.3c0-.75-.07-1.47-.2-2.14H12v4.03h6.18c-.26 1.37-1.02 2.53-2.13 3.17v2.63h3.44c2.02-1.86 3.17-4.61 3.17-7.68z"
-                            fill="#4285F4"
-                        />
-                        <path
-                            d="M12 6.29c1.11 0 2.06.37 2.83.98l2.11-2.11C15.44 3.01 13.73 2 12 2c-3.13 0-5.79 2.1-6.75 4.92H3.06v3.8h3.58C6.21 10.72 8.91 6.29 12 6.29z"
-                            fill="#34A853"
-                        />
-                        <path
-                            d="M5.25 9.91c-.26-.74-.4-1.54-.4-2.41s.14-1.67.4-2.41V3.06H3.06C2.23 4.97 2 6.29 2 7.5c0 1.21.23 2.53.81 3.44l2.44-1.03z"
-                            fill="#FBBC05"
-                        />
-                        <path
-                            d="M12 2c-1.74 0-3.35.58-4.59 1.55L4.3 1.54C2.83.23 1.04 0 0 0v3.06l2.75 2.07c-.13-.33-.2-.69-.2-1.07 0-2.07 1.68-3.75 3.75-3.75 1.24 0 2.33.63 3 1.61L12 2z"
-                            fill="#EA4335"
-                        />
+                        <path d="M23.49 12.3c0-.75-.07-1.47-.2-2.14H12v4.03h6.18c-.26 1.37-1.02 2.53-2.13 3.17v2.63h3.44c2.02-1.86 3.17-4.61 3.17-7.68z" fill="#4285F4" />
+                        <path d="M12 6.29c1.11 0 2.06.37 2.83.98l2.11-2.11C15.44 3.01 13.73 2 12 2c-3.13 0-5.79 2.1-6.75 4.92H3.06v3.8h3.58C6.21 10.72 8.91 6.29 12 6.29z" fill="#34A853" />
+                        <path d="M5.25 9.91c-.26-.74-.4-1.54-.4-2.41s.14-1.67.4-2.41V3.06H3.06C2.23 4.97 2 6.29 2 7.5c0 1.21.23 2.53.81 3.44l2.44-1.03z" fill="#FBBC05" />
+                        <path d="M12 2c-1.74 0-3.35.58-4.59 1.55L4.3 1.54C2.83.23 1.04 0 0 0v3.06l2.75 2.07c-.13-.33-.2-.69-.2-1.07 0-2.07 1.68-3.75 3.75-3.75 1.24 0 2.33.63 3 1.61L12 2z" fill="#EA4335" />
                     </svg>
                     Sign in with Google
                 </button>
