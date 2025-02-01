@@ -3,8 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const admin = require("firebase-admin");
-const path = require("path");
-const path = require("path");
+const path = require("path"); // ✅ Keep only one import
 
 // Initialize Express App
 const app = express();
@@ -31,5 +30,4 @@ app.get("/", (req, res) => {
 // Start the Server
 app.listen(port, () => {
     console.log(`🚀 Server running at http://localhost:${port}`);
-
 });
