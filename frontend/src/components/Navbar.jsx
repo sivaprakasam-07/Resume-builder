@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../contexts/AuthContext";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { currentUser } = useAuth();
 
     return (
         <nav className="bg-white shadow-lg w-full fixed top-0 left-0 z-50">
@@ -22,10 +24,12 @@ const Navbar = () => {
                         <Link to="/features" className="text-gray-800 text-lg font-medium hover:text-blue-600 transition-all duration-300">Features</Link>
                     </div>
 
-                    {/* Login Button */}
-                    <Link to="/login" className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg text-lg font-medium hover:bg-blue-500 transition-all duration-300">
-                        Login
-                    </Link>
+                    {/* Conditional Login Button */}
+                    {!currentUser && (
+                        <Link to="/login" className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg text-lg font-medium hover:bg-blue-500 transition-all duration-300">
+                            Login
+                        </Link>
+                    )}
 
                     {/* Mobile Menu Button */}
                     <button
